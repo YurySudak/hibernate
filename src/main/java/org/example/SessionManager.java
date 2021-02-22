@@ -36,4 +36,16 @@ public class SessionManager {
 
         return results;
     }
+
+    public static void updateAll(Object ...objects) {
+        Session session = SESSION_FACTORY.openSession();
+        session.beginTransaction();
+
+        for (int i = 0; i < objects.length; i++) {
+            session.update(objects[i]);
+        }
+
+        session.getTransaction().commit();
+        session.close();
+    }
 }

@@ -27,9 +27,15 @@
 <!--        <mapping class="org.example.hierarchy.join.Drink"/>-->
 <!--        <mapping class="org.example.hierarchy.join.Donner"/>-->
 
-        <mapping class="org.example.hierarchy.table.Product"/>
-        <mapping class="org.example.hierarchy.table.Drink"/>
-        <mapping class="org.example.hierarchy.table.Donner"/>
+<!--        <mapping class="org.example.hierarchy.table.Product"/>-->
+<!--        <mapping class="org.example.hierarchy.table.Drink"/>-->
+<!--        <mapping class="org.example.hierarchy.table.Donner"/>-->
+
+
+        <mapping class="org.example.relationship.Person"/>
+        <mapping class="org.example.relationship.Info"/>
+        <mapping class="org.example.relationship.City"/>
+
 
     </session-factory>
 </hibernate-configuration>
