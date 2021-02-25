@@ -8,44 +8,41 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class SessionManager {
-    private static final Configuration CONFIGURATION = new Configuration().configure();
-    private static final SessionFactory SESSION_FACTORY = CONFIGURATION.buildSessionFactory();
+    private static final SessionFactory SESSION_FACTORY = new Configuration().configure().buildSessionFactory();
 
-    public static void saveAll(Object ...objects) {
+    private static Session openSessionAndBeginTransaction() {
         Session session = SESSION_FACTORY.openSession();
         session.beginTransaction();
+        return session;
+    }
 
-        for (int i = 0; i < objects.length; i++) {
-            session.save(objects[i]);
-        }
-
+    private static void commitTransactionAndCloseSession(Session session) {
         session.getTransaction().commit();
         session.close();
     }
 
-    public static List<Object> loadAll(Class clazz) {
-        Session session = SESSION_FACTORY.openSession();
-        session.beginTransaction();
+    public static void saveAll(Object ...objects) {
+        Session session = openSessionAndBeginTransaction();
+        for (int i = 0; i < objects.length; i++) {
+            session.save(objects[i]);
+        }
+        commitTransactionAndCloseSession(session);
+    }
 
+    public static List<Object> loadAll(Class clazz) {
+        Session session = openSessionAndBeginTransaction();
         CriteriaQuery<Object> criteriaQuery = session.getCriteriaBuilder().createQuery(clazz);
         criteriaQuery.select(criteriaQuery.from(clazz));
         List<Object> results = session.createQuery(criteriaQuery).getResultList();
-
-        session.getTransaction().commit();
-        session.close();
-
+        commitTransactionAndCloseSession(session);
         return results;
     }
 
     public static void updateAll(Object ...objects) {
-        Session session = SESSION_FACTORY.openSession();
-        session.beginTransaction();
-
+        Session session = openSessionAndBeginTransaction();
         for (int i = 0; i < objects.length; i++) {
             session.update(objects[i]);
         }
-
-        session.getTransaction().commit();
-        session.close();
+        commitTransactionAndCloseSession(session);
     }
 }

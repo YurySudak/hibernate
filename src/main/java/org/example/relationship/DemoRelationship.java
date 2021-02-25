@@ -4,7 +4,7 @@ import org.example.SessionManager;
 
 import java.util.List;
 
-public class Demo {
+public class DemoRelationship {
     public static void main(String[] args) {
 
         City minsk = new City("Minsk");
