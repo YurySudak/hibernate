@@ -1,4 +1,4 @@
-package org.example.jpql;
+package org.example.jpqlcriteria;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +28,10 @@ public class Product {
     public Product(String name, double cost) {
         this.name = name;
         this.cost = cost;
+    }
+
+    public Product(String name) {
+        this.name = name;
     }
 }
 

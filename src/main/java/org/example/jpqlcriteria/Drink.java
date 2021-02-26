@@ -1,4 +1,4 @@
-package org.example.jpql;
+package org.example.jpqlcriteria;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

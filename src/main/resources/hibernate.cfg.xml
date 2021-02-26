@@ -36,9 +36,9 @@
 <!--        <mapping class="org.example.relationship.Info"/>-->
 <!--        <mapping class="org.example.relationship.City"/>-->
 
-            <mapping class="org.example.jpql.Product"/>
-            <mapping class="org.example.jpql.Drink"/>
-            <mapping class="org.example.jpql.Donner"/>
+            <mapping class="org.example.jpqlcriteria.Product"/>
+            <mapping class="org.example.jpqlcriteria.Drink"/>
+            <mapping class="org.example.jpqlcriteria.Donner"/>
 
 
     </session-factory>
